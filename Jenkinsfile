@@ -43,6 +43,7 @@ pipeline {
           body : "build is complete successfully"
         }
     }
+    }
     
     stage('Deploying to Staging') {
       steps {
@@ -60,6 +61,7 @@ pipeline {
         }
       }
     }
+    
     stage('Deploy to Production') {
       steps {
         echo 'AWS EC or AWS EKS can be used for deployment to production.'
@@ -67,3 +69,4 @@ pipeline {
     }
   }
 }
+
