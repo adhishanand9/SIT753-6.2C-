@@ -8,9 +8,9 @@ pipeline {
     PRODUCTION_ENVIRONMENT = "Production"
   }
 
-  triggers {{
+  triggers {
     pollSCM('H/2 * * * *')
-  }}
+  }
   
   stages {
     stage('Build') {
