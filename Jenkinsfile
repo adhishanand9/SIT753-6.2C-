@@ -38,9 +38,7 @@ pipeline {
       }
       post {
         always {
-          mail to : "adhishanand9@gmail.com",
-          subject : "Job '${env.JOB_NAME}'- (${env.BUILD_NUMBER}) has PASSED",
-          body : "build is complete successfully"
+          emailext attachLog: true, body: "Security scan completed with ${currentBuild.currentResult}", recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: "Pipeline ${currentBuild.currentResult} - ${env.JOB_NAME}"
         }
     }
     }
@@ -56,8 +54,8 @@ pipeline {
         echo "Deploying the code to the ${env.PRODUCTION_ENVIRONMENT} environment"
       }
       post {
-        success {
-          echo "Build Successfully deployed to both environments"
+        always {
+          emailext attachLog: true, body: "Integration Test completed with ${currentBuild.currentResult}", recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']], subject: "Pipeline ${currentBuild.currentResult} - ${env.JOB_NAME}"
         }
       }
     }
