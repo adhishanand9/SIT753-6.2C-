@@ -5,7 +5,7 @@ pipeline {
   environment {
     DIRECTORY_PATH = "/Users/adhishanand/.jenkins/jobs/"
     TESTING_ENVIRONMENT = "Development"
-    PRODUCTION_ENVIRONMENT = "Production"
+    PRODUCTION_ENVIRONMENT = "Production12"
   }
 
   triggers {
